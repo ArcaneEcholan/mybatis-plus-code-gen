@@ -35,7 +35,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 ###if(${table.convert})
 ##@TableName("${schemaName}${table.name}")
 ###end
-@TableName("${schemaName}${table.name}")
+@TableName("`${schemaName}${table.name}`")
 #if(${swagger})
 @ApiModel(value = "${entity}对象", description = "$!{table.comment}")
 #end
