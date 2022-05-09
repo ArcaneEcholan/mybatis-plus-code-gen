@@ -1,0 +1,27 @@
+package ${servicePackageName}.impl;
+
+import ${repoPackageName}.${table.entityName}Dao;
+import ${servicePackageName}.${table.entityName}Service;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/**
+ * <p>
+ * ${table.entityName} 服务类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Service
+@Slf4j
+public class ${table.entityName}ServiceImpl implements ${table.entityName}Service{
+
+    @Autowired
+    ${table.entityName}Dao ${daoVarName};
+
+}
+
+

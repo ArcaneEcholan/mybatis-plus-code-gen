@@ -1,0 +1,21 @@
+package ${repoImplPackageName};
+
+import ${package.Entity}.${entity};
+import ${package.Mapper}.${table.mapperName};
+import ${repoPackageName}.${table.entityName}Dao;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+
+import org.springframework.stereotype.Repository;
+
+/**
+ * <p>
+ * $!{table.comment} dao实现类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Repository
+public class ${table.entityName}DaoImpl extends ServiceImpl<${table.mapperName}, ${entity}> implements ${table.entityName}Dao {
+
+}

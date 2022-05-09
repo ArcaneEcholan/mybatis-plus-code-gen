@@ -1,0 +1,16 @@
+package ${repoPackageName};
+
+import ${package.Entity}.${entity};
+import com.baomidou.mybatisplus.extension.service.IService;
+
+/**
+ * <p>
+ * $!{table.comment} dao类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+public interface ${table.entityName}Dao extends IService<${entity}> {
+
+}
