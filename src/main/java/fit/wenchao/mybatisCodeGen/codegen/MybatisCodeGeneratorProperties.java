@@ -43,4 +43,9 @@ public class MybatisCodeGeneratorProperties {
      * 模板父路径
      */
     private String template_path = "/codeGenTemplates";
+
+    /**
+     * 是否自动生成controller（默认不自动生成）
+     */
+    private Boolean controller_on = false;
 }

@@ -21,7 +21,7 @@ public class MybatisCodeGenerator {
 
     static MybatisCodeGenerator mybatisCodeGenerator;
 
-    public static void setStaticMybatisCodeGenerator(  MybatisCodeGenerator mybatisCodeGenerator) {
+    public static void setStaticMybatisCodeGenerator(MybatisCodeGenerator mybatisCodeGenerator) {
         MybatisCodeGenerator.mybatisCodeGenerator = mybatisCodeGenerator;
     }
 
@@ -82,12 +82,18 @@ public class MybatisCodeGenerator {
                     builder.entityBuilder().idType(IdType.AUTO);
                     builder.mapperBuilder().enableMapperAnnotation();
                 })
-                .templateConfig(builder -> builder
-                        .disable(TemplateType.SERVICE, TemplateType.SERVICEIMPL)
-                        .controller(codeGenContext.getTEMPLATE_PATH() + "/controller.java.vm")
-                        .entity(codeGenContext.getTEMPLATE_PATH() + "/entity.java.vm")
-                        .mapper(codeGenContext.getTEMPLATE_PATH() + "/mapper.java.vm")
-                        .xml(codeGenContext.getTEMPLATE_PATH() + "/mapper.xml.vm")
+                .templateConfig(builder -> {
+                            if (codeGenContext.genControllers()) {
+                                builder.controller(codeGenContext.getTEMPLATE_PATH() + "/controller.java.vm");
+                            } else {
+                                builder.controller("");
+                            }
+                            builder
+                                    .disable(TemplateType.SERVICE, TemplateType.SERVICEIMPL)
+                                    .entity(codeGenContext.getTEMPLATE_PATH() + "/entity.java.vm")
+                                    .mapper(codeGenContext.getTEMPLATE_PATH() + "/mapper.java.vm")
+                                    .xml(codeGenContext.getTEMPLATE_PATH() + "/mapper.xml.vm");
+                        }
                 )
                 .injectionConfig(builder -> builder.customFile(customOutputFileMap))
                 .templateEngine(customVelocityTemplateEngine)

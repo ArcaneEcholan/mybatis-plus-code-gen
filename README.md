@@ -1,9 +1,24 @@
 # MyBatisCodeGen
 
+
+### 兼容依赖
+```xml
+<dependency>
+    <groupId>com.baomidou</groupId>
+    <artifactId>mybatis-plus</artifactId>
+    <version>3.5.2</version>
+</dependency>
+```
+```xml
+<dependency>
+    <groupId>com.baomidou</groupId>
+    <artifactId>mybatis-plus-boot-starter</artifactId>
+    <version>3.5.2</version>
+</dependency>
+```
 ### 导入依赖
 
 ```xml
-
 <dependency>
     <groupId>fit.wenchao</groupId>
     <artifactId>mybatis-code-gen-spring-boot-starter</artifactId>
@@ -23,6 +38,7 @@ mybatis:
     db_url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     db_username: root
     db_password: wc123456
+    controller_on: false
 ```
 
 ### 使用示例
@@ -57,6 +73,8 @@ module_loc:
 选填，指定模块路径，必须以/开头，如果不指定，那么默认在当前主模块生成，如果指定的模块名是/testmodule，那么生成的代码将处于：项目目录/testmodule/src/main/java/com/example
 
 author: 选填，指定项目的作者，将在生成的代码注释中体现
+
+controller_on: 选填，默认不生产
 
 
 

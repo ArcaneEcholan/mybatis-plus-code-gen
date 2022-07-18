@@ -52,6 +52,10 @@ public class CodeGenContext {
         return mybatisCodeGeneratorProperties.getDb_url();
     }
 
+    public Boolean genControllers() {
+        return mybatisCodeGeneratorProperties.getController_on();
+    }
+
     public String getMODULE_LOC() {
         return mybatisCodeGeneratorProperties.getModule_loc();
     }
