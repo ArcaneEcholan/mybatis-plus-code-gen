@@ -48,4 +48,9 @@ public class MybatisCodeGeneratorProperties {
      * 是否自动生成controller（默认不自动生成）
      */
     private Boolean controller_on = false;
+
+    /**
+     * 该组件是否生效
+     */
+    private Boolean enabled = true;
 }

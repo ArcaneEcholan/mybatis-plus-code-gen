@@ -71,4 +71,8 @@ public class CodeGenContext {
     public String getTEMPLATE_PATH() {
         return mybatisCodeGeneratorProperties.getTemplate_path();
     }
+
+    public Boolean getEnabled () {
+        return mybatisCodeGeneratorProperties.getEnabled();
+    }
 }

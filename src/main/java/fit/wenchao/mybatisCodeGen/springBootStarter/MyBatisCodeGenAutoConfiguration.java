@@ -26,7 +26,6 @@ public class MyBatisCodeGenAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    @ConditionalOnProperty(prefix = "mybatis.codegen", value = "enabled", havingValue = "true")
     MybatisCodeGenerator mybatisCodeGenerator(CodeGenContext codeGenContext,
                                               CustomVelocityTemplateEngine customVelocityTemplateEngine) {
         checkPropertiesIntegrity();
@@ -39,14 +38,12 @@ public class MyBatisCodeGenAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    @ConditionalOnProperty(prefix = "mybatis.codegen", value = "enabled", havingValue = "true")
     CustomVelocityTemplateEngine customVelocityTemplateEngine(TemplateOutputWriterFactory templateOutputWriterFactory) {
         return new CustomVelocityTemplateEngine(templateOutputWriterFactory);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    @ConditionalOnProperty(prefix = "mybatis.codegen", value = "enabled", havingValue = "true")
     CodeGenContext codeGenContext() {
         checkPropertiesIntegrity();
         return new CodeGenContext(mybatisCodeGeneratorProperties);
@@ -54,7 +51,6 @@ public class MyBatisCodeGenAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    @ConditionalOnProperty(prefix = "mybatis.codegen", value = "enabled", havingValue = "true")
     TemplateOutputWriterFactory templateOutputWriterFactory(
             RepoImplTemplateOutputWriter repoImplTemplateOutputWriter,
             RepoTemplateOutputWriter repoTemplateOutputWriter,
@@ -71,28 +67,24 @@ public class MyBatisCodeGenAutoConfiguration {
     // region register OutputWriters
     @Bean
     @ConditionalOnMissingBean
-    @ConditionalOnProperty(prefix = "mybatis.codegen", value = "enabled", havingValue = "true")
     RepoImplTemplateOutputWriter repoImplTemplateOutputWriter() {
         return new RepoImplTemplateOutputWriter();
     }
 
     @Bean
     @ConditionalOnMissingBean
-    @ConditionalOnProperty(prefix = "mybatis.codegen", value = "enabled", havingValue = "true")
     RepoTemplateOutputWriter repoTemplateOutputWriter() {
         return new RepoTemplateOutputWriter();
     }
 
     @Bean
     @ConditionalOnMissingBean
-    @ConditionalOnProperty(prefix = "mybatis.codegen", value = "enabled", havingValue = "true")
     ServiceImplTemplateOutputWriter serviceImplTemplateOutputWriter() {
         return new ServiceImplTemplateOutputWriter();
     }
 
     @Bean
     @ConditionalOnMissingBean
-    @ConditionalOnProperty(prefix = "mybatis.codegen", value = "enabled", havingValue = "true")
     ServiceTemplateOutputWriter serviceTemplateOutputWriter() {
         return new ServiceTemplateOutputWriter();
     }
@@ -113,6 +105,10 @@ public class MyBatisCodeGenAutoConfiguration {
 
         if (mybatisCodeGeneratorProperties.getDb_password() == null) {
             throw new PropertyMissingException("property dbPassword required");
+        }
+
+        if (mybatisCodeGeneratorProperties.getEnabled() == null) {
+            throw new PropertyMissingException("property enabled required");
         }
     }
 

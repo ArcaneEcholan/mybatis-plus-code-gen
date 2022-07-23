@@ -12,11 +12,13 @@ import fit.wenchao.mybatisCodeGen.codegen.OutputFileEx;
 import fit.wenchao.mybatisCodeGen.codegen.templateOuputWriter.TemplateOutputWriter;
 import fit.wenchao.mybatisCodeGen.codegen.templateOuputWriter.TemplateOutputWriterFactory;
 import fit.wenchao.utils.collection.MapService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
 import java.util.Map;
 
+@Slf4j
 public class MybatisCodeGenerator {
 
     static MybatisCodeGenerator mybatisCodeGenerator;
@@ -40,7 +42,12 @@ public class MybatisCodeGenerator {
     }
 
     public void doGenerate() {
+        if(!codeGenContext.getEnabled()) {
+            log.info("mybatis plus code gen close");
+            return;
+        }
 
+        log.info("mybatis plus code gen starts");
         Map<OutputFile, String> filePathMap = MapService.of(
                 OutputFile.xml, codeGenContext.getRES_LOC() + "/mapper",
                 OutputFile.entity, codeGenContext.getCODE_LOC() + codeGenContext.getPARENT_DIR().toPath() + "/dao/po",
