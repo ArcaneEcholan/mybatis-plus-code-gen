@@ -56,16 +56,12 @@ public class MybatisCodeGenerator {
                 OutputFile.serviceImpl, codeGenContext.getCODE_LOC() + codeGenContext.getPARENT_DIR().toPath() + "/dao/repo/impl"
         );
 
-        System.out.println(filePathMap);
-
         Map<String, String> customOutputFileMap = MapService.of(
                 OutputFileEx.repo.toString(), codeGenContext.getTEMPLATE_PATH() + "/repo.java.vm",
                 OutputFileEx.repoImpl.toString(), codeGenContext.getTEMPLATE_PATH() + "/repoImpl.java.vm",
                 OutputFile.service.toString(), codeGenContext.getTEMPLATE_PATH() + "/myservice.java.vm",
                 OutputFile.serviceImpl.toString(), codeGenContext.getTEMPLATE_PATH() + "/myserviceImpl.java.vm"
         );
-
-        System.out.println(customOutputFileMap);
 
         FastAutoGenerator
                 .create(codeGenContext.getDB_URL(),
