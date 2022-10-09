@@ -8,6 +8,7 @@ import fit.wenchao.mybatisCodeGen.codegen.templateOuputWriter.TemplateOutputWrit
 import fit.wenchao.mybatisCodeGen.codegen.templateOuputWriter.TemplateOutputWriterFactory;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.validation.constraints.NotNull;
 import java.io.File;
 import java.util.Map;
 
@@ -18,14 +19,16 @@ public class CustomVelocityTemplateEngine extends VelocityTemplateEngine {
         this.templateOutputWriterFactory = templateOutputWriterFactory;
     }
 
-    @Override
-    protected void outputCustomFile(Map<String, String> customFile, TableInfo tableInfo, Map<String, Object> objectMap) {
-        String entity = (String) objectMap.get("entity");
-        entity += "PO";
-        objectMap.put("entity", entity);
+    public void publicOutputfile(@NotNull File file, @NotNull Map<String, Object> objectMap, @NotNull String templatePath, boolean fileOverride) {
+        outputFile(file, objectMap, templatePath, fileOverride);
+    }
 
+    protected void outputCustomFile(Map<String, String> customFile, TableInfo tableInfo, Map<String, Object> objectMap) {
+        String entity = (String)objectMap.get("entity");
+        entity = entity + "PO";
+        objectMap.put("entity", entity);
         customFile.forEach((outputFile, templateFilePath) -> {
-            TemplateOutputWriter outputWriter = templateOutputWriterFactory.getOutputWriter(OutputFileEx.valueOf(outputFile));
+            TemplateOutputWriter outputWriter = this.templateOutputWriterFactory.getOutputWriter(OutputFileEx.valueOf(outputFile));
             outputWriter.setTemplateEngine(this).output(templateFilePath, tableInfo, objectMap);
         });
     }

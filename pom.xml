@@ -58,13 +58,6 @@
             <version>3.5.1</version>
         </dependency>
 
-        <!-- <dependency> -->
-        <!--     <groupId>fit.wenchao</groupId> -->
-        <!--     <artifactId>mybatis-plus-generator-modified-by-cw</artifactId> -->
-        <!--     <version>3.5.2</version> -->
-        <!-- </dependency> -->
-
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>

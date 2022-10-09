@@ -1,9 +1,7 @@
 package fit.wenchao.mybatisCodeGen.codegen.templateOuputWriter;
 
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
-import com.baomidou.mybatisplus.generator.engine.AbstractTemplateEngine;
 import fit.wenchao.mybatisCodeGen.codegen.OutputFileEx;
-import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
@@ -11,10 +9,6 @@ import java.util.Map;
 public class ServiceTemplateOutputWriter extends TemplateOutputWriter {
 
     public ServiceTemplateOutputWriter() {
-    }
-
-    public ServiceTemplateOutputWriter(AbstractTemplateEngine templateEngine) {
-        super(templateEngine);
     }
 
     protected String getFileName(TableInfo tableInfo) {
